@@ -2,18 +2,19 @@
     fxLayout="row"
     fxLayout.sm="column"
     fxLayout.xs="column"
+    fxLayoutAlign.gt-md="space-around center"
     fxLayoutGap="10px" 
     fxLayoutGap.xs="0">
 
   <div fxFlex="40">
-    <div fxFlex *ngIf="dish">
+    <div fxFlex = "100" *ngIf="dish">
       <mat-card>
         <mat-card-header>
           <mat-card-title>
             <h3>{{dish.name | uppercase}}</h3>
           </mat-card-title>
         </mat-card-header>
-        <img mat-card-image src={{dish.image}} alt={{dish.name}}>
+        <img mat-card-image  src={{dish.image}} alt={{dish.name}}>
         <mat-card-content>
           <p>{{dish.description}}
           </p>
@@ -26,21 +27,19 @@
     </div>
   </div>
 
-
   <div fxFlex="40">
-    <div fxFlex *ngIf="dish">
-      <h2>Comments</h2>
-      <mat-list>
+      <mat-list *ngIf = "dish">
+        <h2>Comments</h2>
         <mat-list-item *ngFor="let cmt of dish.comments">
           <h3 matLine> {{cmt.comment}} </h3>
           <p matLine>
-            <span> {{cmt.rating}} Stars </span> <br>
-            <span class="demo-2"> -- {{cmt.author}} </span> 
-            <span class="demo-2">{{cmt.date | date}} </span> 
+            {{cmt.rating}} Stars
           </p>
+          <p matLine>
+            <span class="demo-2"> -- {{cmt.author}} {{cmt.date | date}} </span>
+          </p> 
         </mat-list-item>
       </mat-list>
-    </div>
   </div>
 
 </div>
