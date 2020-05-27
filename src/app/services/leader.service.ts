@@ -9,13 +9,13 @@ import { LEADERS } from '../shared/leaders';
 export class LeaderService {
 
   constructor() { }
-  getLeaders(): Leader[] {
-    return LEADERS;
+  getLeaders(): Promise<Leader[]> {
+    return Promise.resolve(LEADERS);
   }
-  getLeadet(id: string): Leader {
-    return  LEADERS.filter((lead) => (lead.id === id))[0];
+  getLeadet(id: string): Promise<Leader> {
+    return  Promise.resolve(LEADERS.filter((lead) => (lead.id === id))[0]);
   }
-  getFeaturedLeader(): Leader {
-    return LEADERS.filter((leader) => leader.featured)[0];
+  getFeaturedLeader(): Promise<Leader> {
+    return Promise.resolve(LEADERS.filter((leader) => leader.featured)[0]);
   }
 }
